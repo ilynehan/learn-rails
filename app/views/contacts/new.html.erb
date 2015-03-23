@@ -1,0 +1,25 @@
+<% content_for :title do %>Contact<% end %>
+<h3>Contact</h3>
+<div class="form">
+
+  <%# provided the @contact argument to the simpleform view helper %>
+  <%# still have to create a controller that assigns the Contact model to the @contact instance variable %>
+  <%# simpleform:
+        - gives form a name that matches the model name 
+        - generates a destination URL based on the model name
+        - uses @contact instance variable to:
+            - name the form
+            - set destination for the form data
+            - initialize each field in the form using attribute from the Contact model
+        - setting values for the form field from the attributes in the model is called "binding the form to the object"
+  %>
+  <%= simple_form_for @contact do |form| %>
+
+    <%# error_notification provides all error handling %>
+    <%= form.error_notification %>
+    <%= form.input :name, autofocus: true %>
+    <%= form.input :email %>
+    <%= form.input :content, as: :text %>
+    <%= form.button :submit, 'Submit', class: 'submit' %>
+  <% end %>
+</div>
